@@ -25,7 +25,7 @@ class ReleveType extends AbstractType
                 'class' => Lieu::class,
                 'choice_label' => 'nom',
             ])
-            ->add('OK', SubmitType::class ,['label' => 'Ajouter', 'attr' => ['class' => 'btn btn-dark']])
+            ->add('OK', SubmitType::class ,['label' => 'Ajouter', 'attr' => ['class' => 'btn btn-success']])
         ;
     }
 

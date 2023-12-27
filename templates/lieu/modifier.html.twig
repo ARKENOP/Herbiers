@@ -3,10 +3,14 @@
 {% block title %}Modifier un Lieu{% endblock %}
 
 {% block body %}
-    <h1>Modifier un Lieu</h1>
-    {{ include('lieu/_formulaire.html.twig', {'button_label': 'Modifier'}) }}
-    <br>
-    <a class="btn btn-dark" href="{{ path('app_lieu_index') }}">Retour liste</a>
-    <br>
-    {{ include('lieu/_formulaire_suppression.html.twig') }}
+    <div class="container">
+        <h1>Modifier un Lieu</h1>
+        <div class="col-md-6">
+            {{ include('lieu/_formulaire.html.twig', {'button_label': 'Modifier'}) }}
+        </div>
+        <br>
+        <a class="btn btn-dark" href="{{ path('app_lieu_index') }}">Retour liste</a>
+        <br>
+        {{ include('lieu/_formulaire_suppression.html.twig') }}
+    </div>
 {% endblock %}

@@ -3,10 +3,13 @@
 {% block title %}Modifier un Relevé{% endblock %}
 
 {% block body %}
-    <h1>Modifier un Relevé</h1>
-    {{ include('releve/_formulaire.html.twig', {'button_label': 'Modifier'}) }}
-    <br>
-    <a class="btn btn-dark" href="{{ path('app_releve_index') }}">Retour liste</a>
-    <br>
-    {{ include('releve/_formulaire_suppression.html.twig') }}
+    <div class="container">
+        <h1>Modifier un Relevé</h1>
+        <div class="col-md-6">
+        {{ include('releve/_formulaire.html.twig', {'button_label': 'Modifier'}) }}
+        </div>
+        <br>
+        <a class="btn btn-dark" href="{{ path('app_releve_index') }}">Retour liste</a>
+        {{ include('releve/_formulaire_suppression.html.twig') }}
+    </div>
 {% endblock %}

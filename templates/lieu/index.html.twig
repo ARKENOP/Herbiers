@@ -21,7 +21,7 @@
                     <td>{{ lieu.nom }}</td>
                     <td>
                         <a class="btn btn-dark" href="{{ path('app_lieu_voir', {'id': lieu.id}) }}">Voir</a>
-                        <a class="btn btn-dark" href="{{ path('app_lieu_modifier', {'id': lieu.id}) }}">Modifier</a>
+                        <a class="btn btn-primary" href="{{ path('app_lieu_modifier', {'id': lieu.id}) }}">Modifier</a>
                     </td>
                 </tr>
             {% else %}
@@ -33,6 +33,6 @@
         </table>
         <hr class="my-4">
         {{ render(controller('App\\Controller\\LieuController::ajouter')) }}
-        <a href="{{ path('app_releve_index') }}" class="btn btn-dark">Revenir à la page des Relevés</a>
+        <a href="{{ path('app_releve_index') }}" class="btn btn-secondary">Revenir à la page des Relevés</a>
     </div>
 {% endblock %}

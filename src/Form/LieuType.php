@@ -14,7 +14,7 @@ class LieuType extends AbstractType
     {
         $builder
             ->add('nom')
-            ->add('OK', SubmitType::class ,['label' => 'Ajouter', 'attr' => ['class' => 'btn btn-dark']])
+            ->add('OK', SubmitType::class ,['label' => 'Ajouter', 'attr' => ['class' => 'btn btn-success']])
         ;
     }
 
