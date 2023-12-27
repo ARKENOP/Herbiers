@@ -80,4 +80,31 @@ class ReleveController extends AbstractController
 
         return $this->redirectToRoute('app_releve_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[Route('/tableau/{id}', name: 'app_tableau')]
+    public function generateTable(int $id, ReleveRepository $releveRepository): Response
+    {
+        $releve = $releveRepository->find($id);
+
+        if (!$releve) {
+            throw $this->createNotFoundException('Relevé non trouvé');
+        }
+
+        $releveBrut = $releve->getReleveBrut();
+
+        $releveArray = explode('/', $releveBrut);
+
+        $tableau = array_fill(0, 3, array_fill(0, 3, 0));
+
+        foreach ($releveArray as $index => $value) {
+            $row = (int)($index / 3);
+            $col = $index % 3;
+            $tableau[$row][$col] = (int)$value;
+        }
+
+        return $this->render('releve/tableau.html.twig', [
+            'tableau' => $tableau,
+        ]);
+    }
+
 }
