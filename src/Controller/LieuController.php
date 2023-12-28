@@ -42,7 +42,7 @@ class LieuController extends AbstractController
             $entityManager->persist($lieu);
             $entityManager->flush();
 
-            return $this->redirectToRoute('lieu_index');
+            return $this->redirectToRoute('app_lieu_index');
         }
 
         return $this->render('lieu/ajouter.html.twig', [
