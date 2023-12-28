@@ -24,7 +24,7 @@
                 <td>{{ releve.lieu.nom }}</td>
                 <td>{{ releve.releveBrut }}</td>
                 <td>{{ render(controller('App\\Controller\\ReleveController::generateTable', {'id': releve.id})) }}</td>
-                <td></td>
+                <td>{{ render(controller('App\\Controller\\ReleveController::generateVisualisation', {'id': releve.id})) }}</td>
                 <td>
                     <a class="btn btn-dark" href="{{ path('app_releve_voir', {'id': releve.id}) }}">Voir</a>
                     <a class="btn btn-primary" href="{{ path('app_releve_modifier', {'id': releve.id}) }}">Modifier</a>

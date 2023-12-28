@@ -107,4 +107,51 @@ class ReleveController extends AbstractController
         ]);
     }
 
+    #[Route('/visualisation/{id}', name: 'app_visualisation')]
+    public function generateVisualisation(int $id, ReleveRepository $releveRepository): Response
+    {
+        $releve = $releveRepository->find($id);
+
+        if (!$releve) {
+            throw $this->createNotFoundException('Relevé non trouvé');
+        }
+
+        $releveBrut = $releve->getReleveBrut();
+
+        $visualisation = $this->generateRandomVisualisation($releveBrut);
+
+        return $this->render('releve/visualisation.html.twig', [
+            'visualisation' => $visualisation,
+        ]);
+    }
+
+
+    private function generateRandomVisualisation(string $releveBrut): array
+    {
+        $visualisation = array_fill(0, 9, array_fill(0, 9, 0));
+
+        $releveArray = explode('/', $releveBrut);
+
+        foreach ($releveArray as $index => $value) {
+            $row = (int)($index / 3) * 3;
+            $col = ($index % 3) * 3;
+
+            $greenCount = (int)$value;
+
+            // On génère un tableau avec toutes les positions possibles
+            $positions = array_fill(0, 9, 0);
+            $availablePositions = range(0, 8);
+            shuffle($availablePositions);
+
+            // On place les cases vertes dans des positions aléatoires
+            for ($i = 0; $i < $greenCount; $i++) {
+                $position = array_shift($availablePositions);
+                $rowOffset = (int)($position / 3);
+                $colOffset = $position % 3;
+
+                $visualisation[$row + $rowOffset][$col + $colOffset] = 1;
+            }
+        }
+        return $visualisation;
+    }
 }
