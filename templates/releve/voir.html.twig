@@ -23,7 +23,7 @@
     </table>
 
     <a class="btn btn-dark" href="{{ path('app_releve_index') }}">Retour liste</a>
-    <a class="btn btn-dark" href="{{ path('app_releve_index', {'id': releve.id}) }}">Modifier</a>
+    <a class="btn btn-primary" href="{{ path('app_releve_modifier', {'id': releve.id}) }}">Modifier</a>
     <br>
     {{ include('releve/_formulaire_suppression.html.twig') }}
 {% endblock %}

@@ -19,7 +19,7 @@
     </table>
 
     <a class="btn btn-dark" href="{{ path('app_lieu_index') }}">Retour liste</a>
-    <a class="btn btn-dark" href="{{ path('app_lieu_index', {'id': lieu.id}) }}">Modifier</a>
+    <a class="btn btn-primary" href="{{ path('app_lieu_modifier', {'id': lieu.id}) }}">Modifier</a>
     <br>
     {{ include('lieu/_formulaire_suppression.html.twig') }}
 {% endblock %}

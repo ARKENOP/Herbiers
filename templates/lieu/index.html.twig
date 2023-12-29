@@ -5,7 +5,7 @@
 {% block body %}
     <div class="container">
         <h1>Liste des Lieux</h1>
-        
+
         {% for message in app.flashes('success') %}
             <div class="alert alert-success">
                 {{ message }}
@@ -32,7 +32,6 @@
                     <td>{{ lieu.id }}</td>
                     <td>{{ lieu.nom }}</td>
                     <td>
-                        <a class="btn btn-dark" href="{{ path('app_lieu_voir', {'id': lieu.id}) }}">Voir</a>
                         <a class="btn btn-primary" href="{{ path('app_lieu_modifier', {'id': lieu.id}) }}">Modifier</a>
                         <a class="btn btn-danger" href="{{ path('app_lieu_supprimer', {'id': lieu.id}) }}">Supprimer</a>
                     </td>
