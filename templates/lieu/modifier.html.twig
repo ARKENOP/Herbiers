@@ -6,7 +6,7 @@
     <div class="container">
         <h1>Modifier un Lieu</h1>
         <div class="col-md-6">
-            {{ include('lieu/_formulaire.html.twig', {'button_label': 'Modifier'}) }}
+            {{ include('lieu/_formulaire.html.twig', {'button_label': 'Modifier', 'form_method': 'POST', 'form_action': path('app_lieu_modifier', {'id': lieu.id}) }) }}
         </div>
         <br>
         <a class="btn btn-dark" href="{{ path('app_lieu_index') }}">Retour liste</a>
