@@ -71,11 +71,17 @@ class LieuController extends AbstractController
     #[Route('/{id}', name: 'app_lieu_supprimer', methods: ['POST'])]
     public function supprimer(Request $request, Lieu $lieu, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('supprimer' . $lieu->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($lieu);
-            $entityManager->flush();
+        try {
+            if ($this->isCsrfTokenValid('supprimer' . $lieu->getId(), $request->request->get('_token'))) {
+                $entityManager->remove($lieu);
+                $entityManager->flush();
+
+                $this->addFlash('success', 'Lieu supprimé avec succès.');
+            }
+        } catch (\Exception $e) {
+            $this->addFlash('danger', 'Impossible de supprimer ce lieu car il est lié à un ou plusieurs relevés.');
         }
 
-        return $this->redirectToRoute('lieu_index');
+        return $this->redirectToRoute('app_lieu_index');
     }
 }
