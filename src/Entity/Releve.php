@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ReleveRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ReleveRepository::class)]
 class Releve
@@ -15,6 +16,7 @@ class Releve
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    #[Assert\NotBlank(message: 'La date ne peut pas être vide.')]
     private ?\DateTimeInterface $date = null;
 
     #[ORM\ManyToOne]
@@ -22,6 +24,8 @@ class Releve
     private ?Lieu $lieu = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le relevé brut ne peut pas être vide.')]
+    #[Assert\Regex(pattern: '/^\d+(\/\d+){8}$/', message: 'Le relevé brut doit être au format correct (ex: 3/3/3/9/6/6/1/9/4).')]
     private ?string $releveBrut = null;
 
     public function getId(): ?int
